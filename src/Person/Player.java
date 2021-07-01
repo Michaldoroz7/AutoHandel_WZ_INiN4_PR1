@@ -5,6 +5,13 @@ public class Player {
     String lastName;
     int budget;
 
+
+    public Player(String firstName, String lastName, int budget){
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.budget = budget;
+    }
+
     public String getFirstName() {
         return firstName;
     }
