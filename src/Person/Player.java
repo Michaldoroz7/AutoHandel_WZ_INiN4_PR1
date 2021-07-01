@@ -3,10 +3,10 @@ package Person;
 public class Player {
     String firstName;
     String lastName;
-    int budget;
+    Double budget;
 
 
-    public Player(String firstName, String lastName, int budget){
+    public Player(String firstName, String lastName, Double budget){
         this.firstName = firstName;
         this.lastName = lastName;
         this.budget = budget;
@@ -28,11 +28,11 @@ public class Player {
         this.lastName = lastName;
     }
 
-    public int getBudget() {
+    public Double getBudget() {
         return budget;
     }
 
-    public void setBudget(int budget) {
+    public void setBudget(Double budget) {
         this.budget = budget;
     }
 }
