@@ -1,5 +1,10 @@
-package Person;
+package com.AutoHandel.user;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class Client {
     int budget;
     String vehicleProducent;

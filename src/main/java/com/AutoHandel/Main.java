@@ -1,7 +1,7 @@
 package com.AutoHandel;
 
-import Control.Menu;
-import Person.Player;
+import com.AutoHandel.service.Menu;
+import com.AutoHandel.user.Player;
 
 public class Main {
 
@@ -11,7 +11,6 @@ public class Main {
         Menu menu = new Menu();
 
         menu.setupMenu(me);
-
 
 
     }

@@ -1,8 +1,9 @@
-package Control;
+package com.AutoHandel.service;
 
-import Person.Player;
+import com.AutoHandel.model.Car;
+import com.AutoHandel.repository.CarRepository;
+import com.AutoHandel.user.Player;
 
-import java.util.Random;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
@@ -23,9 +24,27 @@ public class Menu {
         Double budget = sc.nextDouble();
         player.setBudget(budget);
 
+        System.out.println("Select how large is Car Buy list");
+        int carListSize = sc.nextInt();
+
+
+        CarService.addCarListToRepository(CarGenerator.generateCarList(carListSize));
+
+        //CARS BUILDER TEST
+        for (int i = 0; i < carListSize; i++) {
+            System.out.println(CarRepository.getCar(i).getProducent());
+            System.out.println(CarRepository.getCar(i).getColor());
+            System.out.println(CarRepository.getCar(i).getMileage());
+            System.out.println(CarRepository.getCar(i).getSegment());
+            System.out.println(CarRepository.getCar(i));
+            for (int j = 0; j < CarRepository.getCar(i).getComponentInfoList().size(); j++){
+                System.out.println(CarRepository.getCar(i).getComponentInfoList().get(j));
+            }
+        }
+
 
         System.out.print("[ ");
-        for(int i = 1; i <= 10; i++){
+        for (int i = 1; i <= 10; i++) {
             System.out.print("...");
             TimeUnit.MILLISECONDS.sleep(123);
             System.out.print("...");
@@ -42,7 +61,7 @@ public class Menu {
 
         switch (choose) {
             case 1:
-                menu(player);
+                gameMenu(player);
             case 2:
                 break;
         }
@@ -50,7 +69,7 @@ public class Menu {
 
     }
 
-    private void menu(Player player) {
+    private void gameMenu(Player player) {
         Scanner sc = new Scanner(System.in);
         System.out.println("What you wanna do ?!");
         System.out.println("1. Check your budget");
@@ -66,7 +85,7 @@ public class Menu {
         int choose = sc.nextInt();
 
 
-        switch (choose){
+        switch (choose) {
 
             case 1:
                 System.out.println(player.getBudget());
