@@ -13,6 +13,22 @@ public class CarRepository {
         carList.addAll(newCarList);
     }
 
+    public static void showCarList() {
+        for (int i = 0; i < carList.size(); i++) {
+            System.out.println("ID: " + i);
+            System.out.println("Producent: " + carList.get(i).getProducent());
+            System.out.println("Color: " + carList.get(i).getColor());
+            System.out.println("Mileage: " + carList.get(i).getMileage());
+            System.out.println("Segment: " + carList.get(i).getSegment());
+            System.out.println("Vehicle Type: "  + carList.get(i).getVehicleType());
+            for (int j = 0; j < carList.get(i).getComponentInfoList().size(); j++) {
+                System.out.println("Component: " + carList.get(i).getComponentInfoList().get(j).getComponent() +
+                        " Status: " + carList.get(i).getComponentInfoList().get(j).getIsUnbroken());
+            }
+            System.out.println("-----------------------");
+        }
+    }
+
     public static Car getCar(int index) {
         return carList.get(index);
     }

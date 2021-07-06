@@ -12,5 +12,9 @@ public class CarService {
         CarRepository.addCarList(carList);
     }
 
+    public static void showCarsFromList(){
+        CarRepository.showCarList();
+    }
+
 
 }

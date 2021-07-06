@@ -1,6 +1,5 @@
 package com.AutoHandel.service;
 
-import com.AutoHandel.repository.CarRepository;
 import com.AutoHandel.user.Player;
 
 import java.util.Scanner;
@@ -26,20 +25,11 @@ public class Menu {
         System.out.println("Select how large is Car Buy list");
         int carListSize = sc.nextInt();
 
-
+        //CAR BUILDING AND LIST TEST
         CarService.addCarListToRepository(CarGenerator.generateCarList(carListSize));
 
-        //CARS BUILDER TEST
-        for (int i = 0; i < carListSize; i++) {
-            System.out.println(CarRepository.getCar(i).getProducent());
-            System.out.println(CarRepository.getCar(i).getColor());
-            System.out.println(CarRepository.getCar(i).getMileage());
-            System.out.println(CarRepository.getCar(i).getSegment());
-            System.out.println(CarRepository.getCar(i));
-            for (int j = 0; j < CarRepository.getCar(i).getComponentInfoList().size(); j++){
-                System.out.println(CarRepository.getCar(i).getComponentInfoList().get(j));
-            }
-        }
+        CarService.showCarsFromList();
+
 
 
         System.out.print("[ ");
@@ -69,41 +59,6 @@ public class Menu {
     }
 
     private void gameMenu(Player player) {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("What you wanna do ?!");
-        System.out.println("1. Check your budget");
-        System.out.println("2. Check your cars (WIP)");
-        System.out.println("3. Check car for buy (WIP)");
-        System.out.println("4. Repair your car (WIP)");
-        System.out.println("5. Check Client List (WIP)");
-        System.out.println("6. Sell your car (WIP)");
-        System.out.println("7. Buy advertisement (WIP)");
-        System.out.println("8. Print history of your transactions (WIP)");
-        System.out.println("9. Print history of repairs (WIP)");
 
-        int choose = sc.nextInt();
-
-
-        switch (choose) {
-
-            case 1:
-                System.out.println(player.getBudget());
-            case 2:
-                break;
-            case 3:
-                break;
-            case 4:
-                break;
-            case 5:
-                break;
-            case 6:
-                break;
-            case 7:
-                break;
-            case 8:
-                break;
-            case 9:
-                break;
-        }
     }
 }
