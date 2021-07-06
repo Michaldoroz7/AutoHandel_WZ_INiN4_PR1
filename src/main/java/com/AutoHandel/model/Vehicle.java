@@ -19,6 +19,7 @@ abstract class Vehicle {
     private Color color;
     private Segment segment;
     private List<ComponentInfo> componentInfoList;
+    private VehicleType vehicleType;
 
 
 

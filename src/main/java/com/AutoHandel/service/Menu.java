@@ -1,6 +1,5 @@
 package com.AutoHandel.service;
 
-import com.AutoHandel.model.Car;
 import com.AutoHandel.repository.CarRepository;
 import com.AutoHandel.user.Player;
 

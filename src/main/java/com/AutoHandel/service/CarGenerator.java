@@ -1,9 +1,6 @@
 package com.AutoHandel.service;
 
-import com.AutoHandel.model.Car;
-import com.AutoHandel.model.Color;
-import com.AutoHandel.model.Producent;
-import com.AutoHandel.model.Segment;
+import com.AutoHandel.model.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,13 +9,14 @@ import java.util.Random;
 public class CarGenerator {
 
     public static Car generateCar() {
-        return (Car) Car.builder()
+        return Car.builder()
                 .price(generatePrice())
                 .producent(generateProducent())
                 .mileage(generateMileage())
                 .color(generateColor())
                 .segment(generateSegment())
                 .componentInfoList(ComponentInfoListGenerator.generate())
+                .vehicleType(generateVehicleType())
                 .build();
     }
 
@@ -57,5 +55,9 @@ public class CarGenerator {
 
     private static Segment generateSegment() {
         return Segment.randomSegment();
+    }
+
+    private static VehicleType generateVehicleType(){
+        return VehicleType.randomVehicleType();
     }
 }
