@@ -7,29 +7,20 @@ import java.util.concurrent.TimeUnit;
 
 public class Menu {
 
+    Scanner sc = new Scanner(System.in);
 
     public void setupMenu(Player player) throws InterruptedException {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter your First name");
-        String firstName = sc.next();
-        player.setFirstName(firstName);
 
-        System.out.println("Enter your Last name");
-        String lastName = sc.next();
-        player.setLastName(lastName);
+        System.out.println("Welcome in AutoHandel Game");
+        System.out.println("[-------------------------]");
 
-        System.out.println("Enter your budget (if you will set high number, prices will be also high :)");
-        Double budget = sc.nextDouble();
-        player.setBudget(budget);
+        System.out.println("SELECT DIFFICULT LEVEL:");
+        System.out.println("4. EASY ");
+        System.out.println("8. MEDIUM ");
+        System.out.println("12. HARD ");
 
-        System.out.println("Select how large is Car Buy list");
         int carListSize = sc.nextInt();
-
-        //CAR BUILDING AND LIST TEST
         CarService.addCarListToRepository(CarGenerator.generateCarList(carListSize));
-
-        CarService.showCarsFromList();
-
 
 
         System.out.print("[ ");
@@ -46,9 +37,9 @@ public class Menu {
         System.out.println("1. Start Game (move to game menu)");
         System.out.println("2. Stop (bYE bYE)");
 
-        int choose = sc.nextInt();
+        int choose2 = sc.nextInt();
 
-        switch (choose) {
+        switch (choose2) {
             case 1:
                 gameMenu(player);
             case 2:
@@ -59,6 +50,49 @@ public class Menu {
     }
 
     private void gameMenu(Player player) {
+
+        System.out.println("Welcome in Game Menu");
+        System.out.println("---------------");
+        int menuChoose = 0;
+
+        while (menuChoose != 9) {
+
+            System.out.println("");
+            System.out.println("");
+            System.out.println("Choose what you want to do");
+            System.out.println("1. Check Cars for sale");
+            System.out.println("2. Buy a car (You will need car index to do this");
+            System.out.println("3. Check bought cars");
+            System.out.println("4. Repair car");
+            System.out.println("5. Check clients list");
+            System.out.println("6. Sell car for specified price");
+            System.out.println("7. Check your Budget");
+            System.out.println("");
+            System.out.println("9. Exit game");
+
+            menuChoose = sc.nextInt();
+
+
+            switch (menuChoose) {
+                case 1:
+                    CarService.showCarsFromList();
+                    break;
+                case 2:
+
+                    CarService.showCarsFromList();
+                    System.out.println("Choose which car you want to buy (index)");
+                    int choosedCar = sc.nextInt();
+                    CarService.BuyCarFromList(choosedCar, player.getBudget(), player);
+                    break;
+
+                case 3:
+                    CarService.ShowBoughtCars();
+
+                case 7:
+                    System.out.println("Your budget is: " + player.getBudget());
+
+            }
+        }
 
     }
 }

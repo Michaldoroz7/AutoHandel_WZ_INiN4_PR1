@@ -40,4 +40,8 @@ public class CarRepository {
     public static void deleteCar(int index) {
         carList.remove(index);
     }
+
+    public static List<Car> getCarList(){
+        return carList;
+    }
 }

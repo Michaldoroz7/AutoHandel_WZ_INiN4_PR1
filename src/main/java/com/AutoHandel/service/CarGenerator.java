@@ -17,6 +17,7 @@ public class CarGenerator {
                 .segment(generateSegment())
                 .componentInfoList(ComponentInfoListGenerator.generate())
                 .vehicleType(generateVehicleType())
+                .isOwnedByPlayer(false)
                 .build();
     }
 
@@ -33,8 +34,8 @@ public class CarGenerator {
     }
 
     private static Double generatePrice() {
-        Double min = 1000.0;
-        Double max = 10000.0;
+        Double min = 100.0;
+        Double max = 1000.0;
         Double random = new Random().nextDouble();
 
         return min + (random * (max - min));
