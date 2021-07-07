@@ -19,8 +19,9 @@ public class Menu {
         System.out.println("8. MEDIUM ");
         System.out.println("12. HARD ");
 
-        int carListSize = sc.nextInt();
-        CarService.addCarListToRepository(CarGenerator.generateCarList(carListSize));
+        int listSize = sc.nextInt();
+        CarService.addCarListToRepository(CarGenerator.generateCarList(listSize));
+        ClientService.addClientListToRepository(ClientGenerator.generateClientList(listSize));
 
 
         System.out.print("[ ");
@@ -81,15 +82,21 @@ public class Menu {
 
                     CarService.showCarsFromList();
                     System.out.println("Choose which car you want to buy (index)");
-                    int choosedCar = sc.nextInt();
-                    CarService.BuyCarFromList(choosedCar, player.getBudget(), player);
+                    int chosenCar = sc.nextInt();
+                    CarService.BuyCarFromList(chosenCar, player.getBudget(), player);
                     break;
 
                 case 3:
                     CarService.ShowBoughtCars();
+                    break;
+
+                case 5:
+                    ClientService.showClientList();
+                    break;
 
                 case 7:
                     System.out.println("Your budget is: " + player.getBudget());
+                    break;
 
             }
         }

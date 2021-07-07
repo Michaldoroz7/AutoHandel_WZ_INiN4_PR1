@@ -10,4 +10,8 @@ public class ClientService {
     public static void addClientListToRepository(List<Client> clientList){
         ClientRepository.addClientList(clientList);
     }
+
+    public static void showClientList(){
+        ClientRepository.ShowClientList();
+    }
 }

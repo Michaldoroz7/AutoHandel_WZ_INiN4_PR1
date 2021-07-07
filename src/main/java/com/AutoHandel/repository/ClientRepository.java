@@ -12,6 +12,16 @@ public class ClientRepository {
         clientList.addAll(newClientList);
     }
 
+    public static void ShowClientList(){
+        for(int i = 0; i < clientList.size(); i++){
+            System.out.println("ID: " + i);
+            System.out.println("Budget: " + clientList.get(i).getBudget());
+            System.out.println("Damaged components accept: " + clientList.get(i).getDamagedAccept());
+            System.out.println("Preferable Producents: " + clientList.get(i).getPreferableProducent());
+            System.out.println("Preferable Vehicle Type: " + clientList.get(i).getPreferableVehicleType());
+        }
+    }
+
     public static Client getClient(int index) {
         return clientList.get(index);
     }
