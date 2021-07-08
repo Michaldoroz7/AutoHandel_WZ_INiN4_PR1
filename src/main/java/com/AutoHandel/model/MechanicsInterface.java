@@ -1,8 +1,10 @@
 package com.AutoHandel.model;
 
+import com.AutoHandel.user.Player;
+
+import java.util.List;
+
 public interface MechanicsInterface {
 
-    public static void repairDamagedComponent() {
-
-    }
+    public void repairDamagedComponent(List<Car> carList, int index, Player player);
 }

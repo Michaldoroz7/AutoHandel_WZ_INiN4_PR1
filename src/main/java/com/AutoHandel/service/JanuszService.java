@@ -10,8 +10,8 @@ import java.util.List;
 
 public class JanuszService implements MechanicsInterface {
 
-
-    public static void repairDamagedComponent(List<Car> carList, int index, Player player){
+    @Override
+    public void repairDamagedComponent(List<Car> carList, int index, Player player){
         List<ComponentInfo> componentList = new ArrayList<>();
 
 

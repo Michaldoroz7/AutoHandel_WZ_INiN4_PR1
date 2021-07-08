@@ -52,6 +52,9 @@ public class Menu {
 
     private void gameMenu(Player player) {
 
+        JanuszService januszService = new JanuszService();
+        MarianService marianService = new MarianService();
+
         System.out.println("Welcome in Game Menu");
         System.out.println("---------------");
         int menuChoose = 0;
@@ -94,7 +97,19 @@ public class Menu {
                     CarService.ShowBoughtCars();
                     System.out.println("Select which car you want to repair");
                     int index = sc.nextInt();
-                    JanuszService.repairDamagedComponent(CarService.getBoughtCarList(),index, player);
+                    System.out.println("Select which Mechanic should repair your car");
+                    System.out.println("1. Janusz (Most expensive, 100% repaired)");
+                    System.out.println("2. Marian (Middle one, 10% to let Janusz repair)");
+                    System.out.println("");
+                    int mechanicChoose = sc.nextInt();
+
+                    if (mechanicChoose == 1) {
+                        januszService.repairDamagedComponent(CarService.getBoughtCarList(), index, player);
+                        break;
+                    } else if (mechanicChoose == 2) {
+                        marianService.repairDamagedComponent(CarService.getBoughtCarList(), index, player);
+                        break;
+                    }
                     break;
                 case 5:
                     ClientService.showClientList();
