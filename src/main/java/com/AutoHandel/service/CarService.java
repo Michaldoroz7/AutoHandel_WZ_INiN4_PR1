@@ -29,6 +29,18 @@ public class CarService {
 
     }
 
+    public static List<Car> getBoughtCarList(){
+        List<Car> carList = CarRepository.getCarList();
+        List<Car> boughtCarList = new ArrayList<>();
+
+        for (int i = 0; i < carList.size(); i++) {
+            if (carList.get(i).getIsOwnedByPlayer()) {
+                boughtCarList.add(carList.get(i));
+            }
+        }
+        return boughtCarList;
+    }
+
     public static void ShowBoughtCars() {
         List<Car> carList = CarRepository.getCarList();
         List<Car> boughtCarList = new ArrayList<>();
@@ -41,6 +53,7 @@ public class CarService {
 
         for (int i = 0; i < boughtCarList.size(); i++) {
             System.out.println("ID: " + i);
+            System.out.println("Price: " + boughtCarList.get(i).getPrice());
             System.out.println("Producent: " + boughtCarList.get(i).getProducent());
             System.out.println("Color: " + boughtCarList.get(i).getColor());
             System.out.println("Mileage: " + boughtCarList.get(i).getMileage());

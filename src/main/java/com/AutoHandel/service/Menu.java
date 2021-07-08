@@ -90,6 +90,12 @@ public class Menu {
                     CarService.ShowBoughtCars();
                     break;
 
+                case 4:
+                    CarService.ShowBoughtCars();
+                    System.out.println("Select which car you want to repair");
+                    int index = sc.nextInt();
+                    JanuszService.repairDamagedComponent(CarService.getBoughtCarList(),index, player);
+                    break;
                 case 5:
                     ClientService.showClientList();
                     break;

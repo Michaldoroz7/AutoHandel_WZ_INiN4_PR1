@@ -34,8 +34,8 @@ public class CarGenerator {
     }
 
     private static Double generatePrice() {
-        Double min = 100.0;
-        Double max = 1000.0;
+        Double min = 1000.0;
+        Double max = 10000.0;
         Double random = new Random().nextDouble();
 
         return min + (random * (max - min));
@@ -43,7 +43,7 @@ public class CarGenerator {
 
     private static Double generateMileage() {
         Double min = 0.0;
-        Double max = 1000000.0;
+        Double max = 100000.0;
         Double random = new Random().nextDouble();
 
         return min + (random * (max - min));
