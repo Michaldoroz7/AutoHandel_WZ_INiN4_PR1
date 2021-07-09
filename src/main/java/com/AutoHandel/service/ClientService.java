@@ -14,4 +14,8 @@ public class ClientService {
     public static void showClientList(){
         ClientRepository.ShowClientList();
     }
+
+    public static List<Client> getClientList(){
+        return ClientRepository.getClientList();
+    }
 }

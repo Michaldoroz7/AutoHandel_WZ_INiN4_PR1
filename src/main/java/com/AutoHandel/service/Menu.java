@@ -54,6 +54,7 @@ public class Menu {
 
         JanuszService januszService = new JanuszService();
         MarianService marianService = new MarianService();
+        AdrianService adrianService = new AdrianService();
 
         System.out.println("Welcome in Game Menu");
         System.out.println("---------------");
@@ -71,7 +72,7 @@ public class Menu {
             System.out.println("5. Check clients list");
             System.out.println("6. Sell car for specified price");
             System.out.println("7. Check your Budget");
-            System.out.println("");
+            System.out.println("8. Buy advertisement");
             System.out.println("9. Exit game");
 
             menuChoose = sc.nextInt();
@@ -100,7 +101,7 @@ public class Menu {
                     System.out.println("Select which Mechanic should repair your car");
                     System.out.println("1. Janusz (Most expensive, 100% repaired)");
                     System.out.println("2. Marian (Middle one, 10% to let Janusz repair)");
-                    System.out.println("");
+                    System.out.println("3. Adrian (Low one, 20% chance to not repair your car)");
                     int mechanicChoose = sc.nextInt();
 
                     if (mechanicChoose == 1) {
@@ -109,6 +110,8 @@ public class Menu {
                     } else if (mechanicChoose == 2) {
                         marianService.repairDamagedComponent(CarService.getBoughtCarList(), index, player);
                         break;
+                    } else if (mechanicChoose == 3) {
+                        adrianService.repairDamagedComponent(CarService.getBoughtCarList(), index, player);
                     }
                     break;
                 case 5:
@@ -119,6 +122,16 @@ public class Menu {
                     System.out.println("Your budget is: " + player.getBudget());
                     break;
 
+                case 8:
+                    System.out.println("Choose what type of AD you want");
+                    System.out.println("1. Newspaper (few new clients, cost 1000)");
+                    System.out.println("2. Internet (One new client, cost 500");
+                    int choose = sc.nextInt();
+                    if (choose == 1){
+                        AdvertisementService.buyNewspaperAd(player, ClientService.getClientList());
+                    } else if (choose == 2) {
+                        AdvertisementService.buyInternetAd(player, ClientService.getClientList());
+                    }
             }
         }
 

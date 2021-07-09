@@ -26,7 +26,7 @@ public class JanuszService implements MechanicsInterface {
                 carList.get(index).setPrice(carList.get(index).getPrice() * componentList.get(i).getComponent().getCarValueIncrease());
             }
         }
-
+        System.out.println("Janusz: FIXED!");
     }
 
 

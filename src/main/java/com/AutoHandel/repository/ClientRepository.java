@@ -33,4 +33,8 @@ public class ClientRepository {
     public static void deleteClient(int index) {
         clientList.remove(index);
     }
+
+    public static List<Client> getClientList(){
+        return clientList;
+    }
 }

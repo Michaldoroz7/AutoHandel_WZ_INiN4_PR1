@@ -9,9 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class MarianService implements MechanicsInterface {
-
-    JanuszService januszService = new JanuszService();
+public class AdrianService implements MechanicsInterface {
 
 
     @Override
@@ -27,18 +25,18 @@ public class MarianService implements MechanicsInterface {
             componentList.add(carList.get(index).getComponentInfoList().get(i));
         }
 
-        if (chance == 1) {
-            System.out.println("Marian: I cant repair your car, Janusz will do it");
-            januszService.repairDamagedComponent(carList, index, player);
+        if (chance <= 2) {
+            System.out.println("Adrian: cant repair your car");
+
         } else {
             for (int i = 0; i < componentList.size(); i++) {
                 if (componentList.get(i).getIsUnbroken()) {
                     componentList.get(i).setIsUnbroken(false);
-                    player.setBudget(player.getBudget() - 6000);
+                    player.setBudget(player.getBudget() - 2000);
                     carList.get(index).setPrice(carList.get(index).getPrice() * componentList.get(i).getComponent().getCarValueIncrease());
                 }
             }
-            System.out.println("Marian: FIXED!");
+            System.out.println("Adrian: FIXED!");
         }
     }
 }
