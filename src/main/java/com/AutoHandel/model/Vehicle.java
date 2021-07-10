@@ -20,7 +20,7 @@ abstract class Vehicle {
     private Segment segment;
     private List<ComponentInfo> componentInfoList;
     private VehicleType vehicleType;
-    private Boolean isOwnedByPlayer;
+    private CarStatus carStatus;
 
 
 

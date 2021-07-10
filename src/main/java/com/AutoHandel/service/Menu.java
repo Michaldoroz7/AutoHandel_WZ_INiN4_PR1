@@ -91,11 +91,11 @@ public class Menu {
                     break;
 
                 case 3:
-                    CarService.ShowBoughtCars();
+                    CarService.ShowBoughtCars(CarService.getBoughtCarList());
                     break;
 
                 case 4:
-                    CarService.ShowBoughtCars();
+                    CarService.ShowBoughtCars(CarService.getBoughtCarList());
                     System.out.println("Select which car you want to repair");
                     int index = sc.nextInt();
                     System.out.println("Select which Mechanic should repair your car");

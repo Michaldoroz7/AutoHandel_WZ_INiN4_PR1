@@ -17,7 +17,7 @@ public class CarGenerator {
                 .segment(generateSegment())
                 .componentInfoList(ComponentInfoListGenerator.generate())
                 .vehicleType(generateVehicleType())
-                .isOwnedByPlayer(false)
+                .carStatus(CarStatus.FORSALE)
                 .build();
     }
 
