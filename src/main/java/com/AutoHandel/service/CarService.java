@@ -94,20 +94,30 @@ public class CarService {
         List<Client> specificClient = ClientService.getSpecificClient(ClientService.getClientList(), boughtCarList.get(chosenCar).getProducent(), boughtCarList.get(chosenCar).getVehicleType());
 
         if (specificClient.size() > 0) {
-
-
             Car carForSale = boughtCarList.get(chosenCar);
-
             System.out.println("Select for which client you want to sell car");
             ClientService.showSpecificClientList(specificClient);
             int chosenClient = sc.nextInt();
+            System.out.println("Do you want to change your car price ?, now price is: " + carForSale.getPrice() + " (Y / N)");
+            String changeClass = sc.next();
+
+            if (changeClass.equals("Y")) {
+                System.out.println("Set the price");
+                Double newPrice = sc.nextDouble();
+                carForSale.setPrice(newPrice);
+            }
+
+
             Client potentialClient = specificClient.get(chosenClient);
-            potentialClient.setBudget(potentialClient.getBudget() - carForSale.getPrice());
-            player.setBudget(player.getBudget() + carForSale.getPrice());
-            System.out.println("Car SOLD!");
+            if (potentialClient.getBudget() < carForSale.getPrice()) {
+                System.out.println("This client dont have as much money");
+            } else {
+                potentialClient.setBudget(potentialClient.getBudget() - carForSale.getPrice());
+                player.setBudget(player.getBudget() + carForSale.getPrice());
+                System.out.println("Car SOLD!");
 
-            carForSale.setCarStatus(SOLDTOCLIENT);
-
+                carForSale.setCarStatus(SOLDTOCLIENT);
+            }
         } else {
             System.out.println("There is no client who want car like yours");
         }
