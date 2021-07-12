@@ -16,7 +16,7 @@ public class CarGenerator {
                 .color(generateColor())
                 .segment(generateSegment())
                 .componentInfoList(ComponentInfoListGenerator.generate())
-                .vehicleType(generateVehicleType())
+                .vehicleType(VehicleType.CAR)
                 .carStatus(CarStatus.FORSALE)
                 .build();
     }
@@ -58,7 +58,4 @@ public class CarGenerator {
         return Segment.randomSegment();
     }
 
-    private static VehicleType generateVehicleType(){
-        return VehicleType.randomVehicleType();
-    }
 }

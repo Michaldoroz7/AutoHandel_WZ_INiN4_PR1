@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Random;
 
 public enum VehicleType {
-    Car,
-    Truck;
+    CAR,
+    TRUCK;
 
     private static final List<VehicleType> VALUES = Collections.unmodifiableList(Arrays.asList(values()));
     private static final int SIZE = VALUES.size();
