@@ -17,7 +17,7 @@ public class AdrianService implements MechanicsInterface {
 
         Random random = new Random();
         int chance = random.nextInt(10);
-
+        int randomComponent = random.nextInt(5);
         List<ComponentInfo> componentList = new ArrayList<>();
 
 
@@ -27,7 +27,9 @@ public class AdrianService implements MechanicsInterface {
 
         if (chance <= 2) {
             System.out.println("Adrian: cant repair your car");
-
+            if (chance <= 1){
+                componentList.get(randomComponent).setIsUnbroken(false);
+            }
         } else {
             for (int i = 0; i < componentList.size(); i++) {
                 if (componentList.get(i).getIsUnbroken()) {

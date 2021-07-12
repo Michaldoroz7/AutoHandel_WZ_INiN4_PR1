@@ -70,7 +70,7 @@ public class Menu {
             System.out.println("3. Check bought cars");
             System.out.println("4. Repair car");
             System.out.println("5. Check clients list");
-            System.out.println("6. Sell car for specified price");
+            System.out.println("6. Sell car");
             System.out.println("7. Check your Budget");
             System.out.println("8. Buy advertisement");
             System.out.println("9. Exit game");
@@ -91,11 +91,11 @@ public class Menu {
                     break;
 
                 case 3:
-                    CarService.ShowBoughtCars(CarService.getBoughtCarList());
+                    CarService.showBoughtCars(CarService.getBoughtCarList());
                     break;
 
                 case 4:
-                    CarService.ShowBoughtCars(CarService.getBoughtCarList());
+                    CarService.showBoughtCars(CarService.getBoughtCarList());
                     System.out.println("Select which car you want to repair");
                     int index = sc.nextInt();
                     System.out.println("Select which Mechanic should repair your car");
@@ -118,6 +118,9 @@ public class Menu {
                     ClientService.showClientList();
                     break;
 
+                case 6:
+                    CarService.sellOwnedCar(CarService.getBoughtCarList(), player);
+                    break;
                 case 7:
                     System.out.println("Your budget is: " + player.getBudget());
                     break;
