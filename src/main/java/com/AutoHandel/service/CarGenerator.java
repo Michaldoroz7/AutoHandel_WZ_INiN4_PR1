@@ -17,7 +17,7 @@ public class CarGenerator {
                 .segment(generateSegment())
                 .componentInfoList(ComponentInfoListGenerator.generate())
                 .vehicleType(VehicleType.CAR)
-                .carStatus(CarStatus.FORSALE)
+                .vehicleStatus(VehicleStatus.FORSALE)
                 .build();
     }
 

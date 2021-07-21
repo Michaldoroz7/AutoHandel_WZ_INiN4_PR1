@@ -10,5 +10,7 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 public class Truck extends Vehicle{
 
+    private int cargoSpace;
+
 
 }

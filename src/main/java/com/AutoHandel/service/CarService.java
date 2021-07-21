@@ -1,7 +1,7 @@
 package com.AutoHandel.service;
 
 import com.AutoHandel.model.Car;
-import com.AutoHandel.model.CarStatus;
+import com.AutoHandel.model.VehicleStatus;
 import com.AutoHandel.repository.CarRepository;
 import com.AutoHandel.user.Client;
 import com.AutoHandel.user.Player;
@@ -10,8 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import static com.AutoHandel.model.CarStatus.OWNEDBYPLAYER;
-import static com.AutoHandel.model.CarStatus.SOLDTOCLIENT;
+import static com.AutoHandel.model.VehicleStatus.OWNEDBYPLAYER;
+import static com.AutoHandel.model.VehicleStatus.SOLDTOCLIENT;
 
 public class CarService {
 
@@ -25,7 +25,7 @@ public class CarService {
         List<Car> carList = CarRepository.getCarList();
 
         for (int i = 0; i < carList.size(); i++) {
-            if (carList.get(i).getCarStatus() == CarStatus.valueOf("FORSALE")) {
+            if (carList.get(i).getVehicleStatus() == VehicleStatus.valueOf("FORSALE")) {
                 System.out.println("ID: " + i);
                 System.out.println("Producent: " + carList.get(i).getProducent());
                 System.out.println("Price: " + carList.get(i).getPrice());
@@ -33,7 +33,7 @@ public class CarService {
                 System.out.println("Mileage: " + carList.get(i).getMileage());
                 System.out.println("Segment: " + carList.get(i).getSegment());
                 System.out.println("Vehicle Type: " + carList.get(i).getVehicleType());
-                System.out.println("Car status " + carList.get(i).getCarStatus());
+                System.out.println("Car status " + carList.get(i).getVehicleStatus());
                 for (int j = 0; j < carList.get(i).getComponentInfoList().size(); j++) {
                     System.out.println("Component: " + carList.get(i).getComponentInfoList().get(j).getComponent() +
                             " Status: " + carList.get(i).getComponentInfoList().get(j).getIsUnbroken());
@@ -45,8 +45,8 @@ public class CarService {
 
     public static void BuyCarFromList(int index, Double budget, Player player) {
 
-        if (CarRepository.getCar(index).getCarStatus() == CarStatus.valueOf("FORSALE") && CarRepository.getCar(index).getPrice() < budget) {
-            CarRepository.getCar(index).setCarStatus(OWNEDBYPLAYER);
+        if (CarRepository.getCar(index).getVehicleStatus() == VehicleStatus.valueOf("FORSALE") && CarRepository.getCar(index).getPrice() < budget) {
+            CarRepository.getCar(index).setVehicleStatus(OWNEDBYPLAYER);
             player.setBudget(budget - CarRepository.getCar(index).getPrice());
         } else {
             System.out.println("You cant do it bro");
@@ -59,7 +59,7 @@ public class CarService {
         List<Car> boughtCarList = new ArrayList<>();
 
         for (int i = 0; i < carList.size(); i++) {
-            if (carList.get(i).getCarStatus() == CarStatus.valueOf("OWNEDBYPLAYER")) {
+            if (carList.get(i).getVehicleStatus() == VehicleStatus.valueOf("OWNEDBYPLAYER")) {
                 boughtCarList.add(carList.get(i));
             }
         }
@@ -76,7 +76,7 @@ public class CarService {
             System.out.println("Mileage: " + boughtCarList.get(i).getMileage());
             System.out.println("Segment: " + boughtCarList.get(i).getSegment());
             System.out.println("Vehicle Type: " + boughtCarList.get(i).getVehicleType());
-            System.out.println("Car status: " + boughtCarList.get(i).getCarStatus());
+            System.out.println("Car status: " + boughtCarList.get(i).getVehicleStatus());
             for (int j = 0; j < boughtCarList.get(i).getComponentInfoList().size(); j++) {
                 System.out.println("Component: " + boughtCarList.get(i).getComponentInfoList().get(j).getComponent() +
                         " Status: " + boughtCarList.get(i).getComponentInfoList().get(j).getIsUnbroken());
@@ -115,8 +115,10 @@ public class CarService {
                 potentialClient.setBudget(potentialClient.getBudget() - carForSale.getPrice());
                 player.setBudget(player.getBudget() + carForSale.getPrice());
                 System.out.println("Car SOLD!");
+                ClientGenerator.generateClient();
+                ClientGenerator.generateClient();
 
-                carForSale.setCarStatus(SOLDTOCLIENT);
+                carForSale.setVehicleStatus(SOLDTOCLIENT);
             }
         } else {
             System.out.println("There is no client who want car like yours");

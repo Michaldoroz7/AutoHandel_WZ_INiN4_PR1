@@ -12,7 +12,7 @@ public class AdvertisementService {
         Double newspaperAdCost = 1000.0;
 
         Random random = new Random();
-        int newClientAmount = random.nextInt(4);
+        int newClientAmount = random.nextInt(6);
 
         if (player.getBudget() > newspaperAdCost) {
             player.setBudget(player.getBudget() - newspaperAdCost);

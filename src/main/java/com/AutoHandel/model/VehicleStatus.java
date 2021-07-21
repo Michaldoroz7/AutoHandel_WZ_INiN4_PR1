@@ -1,6 +1,6 @@
 package com.AutoHandel.model;
 
-public enum CarStatus {
+public enum VehicleStatus {
     FORSALE,
     OWNEDBYPLAYER,
     SOLDTOCLIENT,

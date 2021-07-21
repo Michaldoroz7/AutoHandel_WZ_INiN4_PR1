@@ -20,7 +20,7 @@ abstract class Vehicle {
     private Segment segment;
     private List<ComponentInfo> componentInfoList;
     private VehicleType vehicleType;
-    private CarStatus carStatus;
+    private VehicleStatus vehicleStatus;
 
 
 
