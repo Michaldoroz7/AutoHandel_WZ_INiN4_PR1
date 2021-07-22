@@ -17,14 +17,6 @@ public class CarRepository {
         return carList.get(index);
     }
 
-    public static void saveCar(Car car) {
-        carList.add(car);
-    }
-
-    public static void deleteCar(int index) {
-        carList.remove(index);
-    }
-
     public static List<Car> getCarList() {
         return carList;
     }

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class CarGenerator {
+public class VehicleGenerator {
 
     public static Car generateCar() {
         return Car.builder()
@@ -17,6 +17,18 @@ public class CarGenerator {
                 .segment(generateSegment())
                 .componentInfoList(ComponentInfoListGenerator.generate())
                 .vehicleType(VehicleType.CAR)
+                .vehicleStatus(VehicleStatus.FORSALE)
+                .build();
+    }
+
+    public static Truck generateTruck(){
+        return Truck.builder()
+                .price(generatePrice())
+                .producent(generateProducent())
+                .mileage(generateMileage())
+                .color(generateColor())
+                .componentInfoList(ComponentInfoListGenerator.generate())
+                .vehicleType(VehicleType.TRUCK)
                 .vehicleStatus(VehicleStatus.FORSALE)
                 .build();
     }
@@ -57,5 +69,6 @@ public class CarGenerator {
     private static Segment generateSegment() {
         return Segment.randomSegment();
     }
+
 
 }

@@ -20,7 +20,7 @@ public class Menu {
         System.out.println("12. HARD ");
 
         int listSize = sc.nextInt();
-        CarService.addCarListToRepository(CarGenerator.generateCarList(listSize));
+        CarService.addCarListToRepository(VehicleGenerator.generateCarList(listSize));
         ClientService.addClientListToRepository(ClientGenerator.generateClientList(listSize));
 
 
