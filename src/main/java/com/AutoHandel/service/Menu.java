@@ -1,5 +1,6 @@
 package com.AutoHandel.service;
 
+import com.AutoHandel.model.MechanicsInterface;
 import com.AutoHandel.user.Player;
 
 import java.util.Scanner;
@@ -52,9 +53,9 @@ public class Menu {
 
     private void gameMenu(Player player) {
 
-        JanuszService januszService = new JanuszService();
-        MarianService marianService = new MarianService();
-        AdrianService adrianService = new AdrianService();
+        MechanicsInterface januszService = new JanuszService();
+        MechanicsInterface marianService = new MarianService();
+        MechanicsInterface adrianService = new AdrianService();
 
         System.out.println("Welcome in Game Menu");
         System.out.println("---------------");
@@ -62,8 +63,8 @@ public class Menu {
 
         while (menuChoose != 9) {
 
-            System.out.println("");
-            System.out.println("");
+            System.out.println("\n");
+            System.out.println("PLAYER BUDGET:  " + player.getBudget() + "  |    OWNED CARS:  " + CarService.getBoughtCarList().size());
             System.out.println("Choose what you want to do");
             System.out.println("1. Check Cars for sale");
             System.out.println("2. Buy a car (You will need car index to do this");
@@ -71,9 +72,8 @@ public class Menu {
             System.out.println("4. Repair car");
             System.out.println("5. Check clients list");
             System.out.println("6. Sell car");
-            System.out.println("7. Check your Budget");
-            System.out.println("8. Buy advertisement");
-            System.out.println("9. Exit game");
+            System.out.println("7. Buy advertisement");
+            System.out.println("8. Exit game");
 
             menuChoose = sc.nextInt();
 
@@ -105,13 +105,13 @@ public class Menu {
                     int mechanicChoose = sc.nextInt();
 
                     if (mechanicChoose == 1) {
-                        januszService.repairDamagedComponent(CarService.getBoughtCarList(), index, player);
+                        januszService.repairDamagedComponent(CarService.getBoughtCarList().get(index), player);
                         break;
                     } else if (mechanicChoose == 2) {
-                        marianService.repairDamagedComponent(CarService.getBoughtCarList(), index, player);
+                        marianService.repairDamagedComponent(CarService.getBoughtCarList().get(index), player);
                         break;
                     } else if (mechanicChoose == 3) {
-                        adrianService.repairDamagedComponent(CarService.getBoughtCarList(), index, player);
+                        adrianService.repairDamagedComponent(CarService.getBoughtCarList().get(index), player);
                     }
                     break;
                 case 5:
@@ -121,16 +121,13 @@ public class Menu {
                 case 6:
                     CarService.sellOwnedCar(CarService.getBoughtCarList(), player);
                     break;
-                case 7:
-                    System.out.println("Your budget is: " + player.getBudget());
-                    break;
 
-                case 8:
+                case 7:
                     System.out.println("Choose what type of AD you want");
                     System.out.println("1. Newspaper (few new clients, cost 1000)");
                     System.out.println("2. Internet (One new client, cost 500");
                     int choose = sc.nextInt();
-                    if (choose == 1){
+                    if (choose == 1) {
                         AdvertisementService.buyNewspaperAd(player, ClientService.getClientList());
                     } else if (choose == 2) {
                         AdvertisementService.buyInternetAd(player, ClientService.getClientList());
