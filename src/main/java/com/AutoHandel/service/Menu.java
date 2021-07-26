@@ -1,6 +1,7 @@
 package com.AutoHandel.service;
 
 import com.AutoHandel.model.MechanicsInterface;
+import com.AutoHandel.repository.LogsRepository;
 import com.AutoHandel.user.Player;
 
 import java.util.Scanner;
@@ -73,7 +74,8 @@ public class Menu {
             System.out.println("5. Check clients list");
             System.out.println("6. Sell car");
             System.out.println("7. Buy advertisement");
-            System.out.println("8. Exit game");
+            System.out.println("8. Check transaction history");
+            System.out.println("9. Exit game");
 
             menuChoose = sc.nextInt();
 
@@ -132,6 +134,11 @@ public class Menu {
                     } else if (choose == 2) {
                         AdvertisementService.buyInternetAd(player, ClientService.getClientList());
                     }
+
+                case 8:
+                    LogsRepository.getAllLogs().forEach(log -> {
+                        System.out.println("Log: " + log);
+                    });
             }
         }
 

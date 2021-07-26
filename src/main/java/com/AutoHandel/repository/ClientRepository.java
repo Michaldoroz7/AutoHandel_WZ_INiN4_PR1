@@ -22,18 +22,6 @@ public class ClientRepository {
         }
     }
 
-    public static Client getClient(int index) {
-        return clientList.get(index);
-    }
-
-    public static void saveClient(Client client) {
-        clientList.add(client);
-    }
-
-    public static void deleteClient(int index) {
-        clientList.remove(index);
-    }
-
     public static List<Client> getClientList(){
         return clientList;
     }
