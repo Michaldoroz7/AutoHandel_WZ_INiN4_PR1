@@ -1,7 +1,7 @@
 package com.AutoHandel.service;
 
 import com.AutoHandel.model.MechanicsInterface;
-import com.AutoHandel.repository.LogsRepository;
+import com.AutoHandel.repository.LogRepository;
 import com.AutoHandel.user.Player;
 
 import java.util.Scanner;
@@ -136,7 +136,7 @@ public class Menu {
                     }
 
                 case 8:
-                    LogsRepository.getAllLogs().forEach(log -> {
+                    LogRepository.getAllTransactionLogs().forEach(log -> {
                         System.out.println("Log: " + log);
                     });
             }

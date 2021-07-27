@@ -3,7 +3,6 @@ package com.AutoHandel.service;
 import com.AutoHandel.model.Car;
 import com.AutoHandel.model.VehicleStatus;
 import com.AutoHandel.repository.CarRepository;
-import com.AutoHandel.repository.LogsRepository;
 import com.AutoHandel.user.Client;
 import com.AutoHandel.user.Player;
 
@@ -49,7 +48,7 @@ public class CarService {
         if (CarRepository.getCar(index).getVehicleStatus() == VehicleStatus.valueOf("FORSALE") && CarRepository.getCar(index).getPrice() < budget) {
             CarRepository.getCar(index).setVehicleStatus(OWNEDBYPLAYER);
             player.setBudget(budget - CarRepository.getCar(index).getPrice());
-            LogsRepository.addLogs("Player: " + player.getFirstName() + " bought car for price " + CarRepository.getCar(index).getPrice() + ", his budget after transaction: " + player.getBudget() );
+            LogService.saveTransactionLogs(player.getFirstName(), player.getBudget(), CarRepository.getCar(index).getPrice());
         } else {
             System.out.println("You cant do it bro");
         }

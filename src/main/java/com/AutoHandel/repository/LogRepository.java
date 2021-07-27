@@ -3,11 +3,11 @@ package com.AutoHandel.repository;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LogsRepository {
+public class LogRepository {
 
     private static List<String> transactionLogs = new ArrayList<>();
 
-    public static List<String> getAllLogs(){
+    public static List<String> getAllTransactionLogs(){
         return transactionLogs;
     }
 
