@@ -5,7 +5,6 @@ import com.AutoHandel.model.VehicleStatus;
 import com.AutoHandel.repository.CarRepository;
 import com.AutoHandel.user.Client;
 import com.AutoHandel.user.Player;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -48,7 +47,7 @@ public class CarService {
         if (CarRepository.getCar(index).getVehicleStatus() == VehicleStatus.valueOf("FORSALE") && CarRepository.getCar(index).getPrice() < budget) {
             CarRepository.getCar(index).setVehicleStatus(OWNEDBYPLAYER);
             player.setBudget(budget - CarRepository.getCar(index).getPrice());
-            LogService.saveTransactionLogs(player.getFirstName(), player.getBudget(), CarRepository.getCar(index).getPrice());
+            LogService.saveTransactionLogs(player.getFirstName(), player.getBudget(), CarRepository.getCar(index).getPrice(), "bought");
         } else {
             System.out.println("You cant do it bro");
         }
@@ -118,6 +117,7 @@ public class CarService {
                 System.out.println("Car SOLD!");
                 ClientGenerator.generateClient();
                 ClientGenerator.generateClient();
+                LogService.saveTransactionLogs(player.getFirstName(), player.getBudget(), carForSale.getPrice(), "sold");
 
                 carForSale.setVehicleStatus(SOLDTOCLIENT);
             }
