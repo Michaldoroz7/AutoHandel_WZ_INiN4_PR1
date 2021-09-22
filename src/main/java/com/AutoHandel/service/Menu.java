@@ -4,6 +4,7 @@ import com.AutoHandel.model.MechanicsInterface;
 import com.AutoHandel.repository.LogRepository;
 import com.AutoHandel.user.Player;
 
+import java.io.IOException;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
@@ -11,7 +12,7 @@ public class Menu {
 
     Scanner sc = new Scanner(System.in);
 
-    public void setupMenu(Player player) throws InterruptedException {
+    public void setupMenu(Player player) throws InterruptedException, IOException {
 
         System.out.println("Welcome in AutoHandel Game");
         System.out.println("[-------------------------]");
@@ -52,7 +53,7 @@ public class Menu {
 
     }
 
-    private void gameMenu(Player player) {
+    private void gameMenu(Player player) throws IOException {
 
         MechanicsInterface januszService = new JanuszService();
         MechanicsInterface marianService = new MarianService();
@@ -62,7 +63,7 @@ public class Menu {
         System.out.println("---------------");
         int menuChoose = 0;
 
-        while (menuChoose != 9) {
+        while (menuChoose != 10) {
 
             System.out.println("\n");
             System.out.println("PLAYER BUDGET:  " + player.getBudget() + "  |    OWNED CARS:  " + CarService.getBoughtCarList().size());
@@ -75,7 +76,8 @@ public class Menu {
             System.out.println("6. Sell car");
             System.out.println("7. Buy advertisement");
             System.out.println("8. Check transaction history");
-            System.out.println("9. Exit game");
+            System.out.println("9. Check transaction history");
+            System.out.println("10. Exit game");
 
             menuChoose = sc.nextInt();
 
@@ -139,8 +141,13 @@ public class Menu {
                     LogRepository.getAllTransactionLogs().forEach(log -> {
                         System.out.println("Log: " + log);
                     });
+
+                case 9:
+                    SaveService.savingMovesToFile(LogRepository.getAllTransactionLogs());
+                    System.out.println("Transactions saved");
+                    break;
             }
         }
-
     }
 }
+
